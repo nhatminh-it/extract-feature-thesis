@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     args.iscuda = common.torch_set_gpu(args.gpu)
-
+    print('args.dataset', type(args.dataset))
     dataset = datasets.create(args.dataset)
     print("Dataset:", dataset)
     print(type(dataset))
@@ -124,5 +124,5 @@ if __name__ == '__main__':
     res = extract_features(dataset, net, args.trfs, pooling=args.pooling, gemp=args.gemp, detailed=args.detailed,
                            threads=args.threads, dbg=args.dbg, whiten=args.whiten, output=args.output)
 
-#python -m dirtorch.extract_features --dataset 'ImageList("deep-image-retrieval\path_to_image.txt")' --checkpoint D:\Projects\THESIS\deep-image-retrieval\Resnet101-TL-MAC.pt --output features.npy --whiten Landmarks_clean --whitenp 0.25 --gpu -1
+#python -m dirtorch.extract_features --dataset "ImageList('path_to_image.txt')" --checkpoint Resnet101-TL-MAC.pt --output features.npy --whiten Landmarks_clean --whitenp 0.25 --gpu -1
 
